@@ -1,6 +1,5 @@
 {
-  "Data_Ultima_Atualizacao_NCM": "02/08/2022",
-  "Nomenclaturas": [
+  "ncm": [
     {
       "Codigo": "01",
       "Descricao": "Animais vivos.",
