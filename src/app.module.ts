@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
+import { NcmsModule } from './ncms/ncms.module';
 
 @Module({
-  imports: [],
+  imports: [NcmsModule],
   controllers: [],
   providers: [],
 })
