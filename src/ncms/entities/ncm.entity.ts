@@ -12,10 +12,10 @@ export class Ncm {
   descricao: string;
 
   @Prop()
-  data_inicio: Date;
+  data_inicio: string;
 
   @Prop()
-  data_fim: Date;
+  data_fim: string;
 
   @Prop()
   tipo_ato: string;
