@@ -1,26 +1,46 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateNcmDto } from './dto/create-ncm.dto';
 import { UpdateNcmDto } from './dto/update-ncm.dto';
+import { Ncm, NcmDocument } from './entities/ncm.entity';
 
 @Injectable()
 export class NcmsService {
+  constructor(@InjectModel(Ncm.name) private ncmModel: Model<NcmDocument>) {}
+
   create(createNcmDto: CreateNcmDto) {
-    return 'This action adds a new ncm';
+    const ncm = new this.ncmModel(createNcmDto);
+    return ncm.save();
   }
 
   findAll() {
-    return `This action returns all ncms`;
+    return this.ncmModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ncm`;
+  findOne(id: string) {
+    return this.ncmModel.findById(id);
   }
 
-  update(id: number, updateNcmDto: UpdateNcmDto) {
-    return `This action updates a #${id} ncm`;
+  update(id: string, updateNcmDto: UpdateNcmDto) {
+    return this.ncmModel.findByIdAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        updateNcmDto,
+      },
+      {
+        new: true,
+      },
+    );
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} ncm`;
+  remove(id: string) {
+    return this.ncmModel
+      .deleteOne({
+        _id: id,
+      })
+      .exec();
   }
 }
