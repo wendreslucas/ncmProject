@@ -27,16 +27,16 @@ export class NcmsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.ncmsService.findOne(+id);
+    return this.ncmsService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateNcmDto: UpdateNcmDto) {
-    return this.ncmsService.update(+id, updateNcmDto);
+    return this.ncmsService.update(id, updateNcmDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ncmsService.remove(+id);
+    return this.ncmsService.remove(id);
   }
 }
