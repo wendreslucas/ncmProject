@@ -28,7 +28,7 @@ export class NcmsService {
         _id: id,
       },
       {
-        updateNcmDto,
+        $set: updateNcmDto,
       },
       {
         new: true,
